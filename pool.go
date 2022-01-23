@@ -2,7 +2,6 @@ package pool
 
 import (
 	"container/list"
-	"github.com/civet148/log"
 	"sync"
 )
 
@@ -29,10 +28,8 @@ func (p *Pool) Get() interface{} {
 	var v interface{}
 	if e == nil {
 		v = p.New()
-		log.Debugf("new object")
 	} else {
 		v = e.Value
-		log.Debugf("get object")
 		p.queue.Remove(e)
 	}
 	return v
